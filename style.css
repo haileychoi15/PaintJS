@@ -6,7 +6,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 50px;
+    padding: 50px 0;
 }
 
 .canvas {
@@ -21,7 +21,15 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 80px;
+    margin-top: 70px;
+}
+
+.controls .controls-range {
+    margin-bottom: 30px;
+}
+
+.controls .controls-range input {
+    cursor: pointer;
 }
 
 .controls .controls-btns {
@@ -31,18 +39,23 @@ body {
 .controls-btns button {
     width: 80px;
     border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    padding: 5px 20px;
-    font-weight: 700;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-weight: bold;
     text-align: center;
     text-transform: uppercase;
     color: rgba(0, 0, 0, 0.8);
     background-color: #ffffff;
     box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+    transition: transform 150ms ease-in-out;
+}
+
+.controls-btns button + button {
+    margin-left: 5px;
 }
 
 .controls-btns button:active {
-    transform: scale(0.9);
+    transform: scale(0.95);
 }
 
 .controls .controls-colors {
