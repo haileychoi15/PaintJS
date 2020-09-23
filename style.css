@@ -1,0 +1,95 @@
+@import "reset.css";
+
+body {
+    background-color: #f6f9fc;
+    font-family: 'Nanum Gothic', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+}
+
+.canvas {
+    width: 700px;
+    height: 700px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 80px;
+}
+
+.controls .controls-btns {
+    margin-bottom: 30px;
+}
+
+.controls-btns button {
+    width: 80px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 5px 20px;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.8);
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.controls-btns button:active {
+    transform: scale(0.9);
+}
+
+.controls .controls-colors {
+    display: flex;
+}
+
+.controls-colors .controls-color {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+}
+
+.controls-color:nth-child(1) {
+    background-color: #000000;
+}
+
+.controls-color:nth-child(2) {
+    background-color: #ffffff;
+}
+
+.controls-color:nth-child(3) {
+    background-color: #ff3b30;
+}
+
+.controls-color:nth-child(4) {
+    background-color: #ff9500;
+}
+
+.controls-color:nth-child(5) {
+    background-color: #ffcc00;
+}
+
+.controls-color:nth-child(6) {
+    background-color: #4cd963;
+}
+
+.controls-color:nth-child(7) {
+    background-color: #5ac9fa;
+}
+
+.controls-color:nth-child(8) {
+    background-color: #0579ff;
+}
+
+.controls-color:nth-child(9) {
+    background-color: #5856d6;
+}
+
