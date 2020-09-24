@@ -2,6 +2,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const canvas = document.querySelector('#jsCanvas');
     const ctx = canvas.getContext('2d');
     const colors = document.querySelector('#jsColors');
+    const colorPick = document.querySelector('#jsCustomColor');
     const range = document.querySelector('#jsRange');
     const mode = document.querySelector('#jsMode');
     const saveBtn = document.querySelector('#jsSave');
@@ -44,6 +45,14 @@ window.addEventListener('DOMContentLoaded', () => {
     function handleColorClick(e) {
         if (e.target.classList.contains('jsColor')) {
             const color = window.getComputedStyle(e.target).backgroundColor;
+            ctx.strokeStyle = color;
+            ctx.fillStyle = color;
+        }
+    }
+
+    function handleColorPickClick(e) {
+        if (e.target.classList.contains('jsColor')) {
+            const color =  e.target.value;
             ctx.strokeStyle = color;
             ctx.fillStyle = color;
         }
@@ -93,6 +102,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     colors.addEventListener('click', handleColorClick);
+    colorPick.addEventListener('input', handleColorPickClick);
 
     if (range) {
         range.addEventListener('input', handleRangeChange);

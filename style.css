@@ -60,14 +60,27 @@ body {
 
 .controls .controls-colors {
     display: flex;
+    align-items: center;
 }
 
-.controls-colors .controls-color {
+.controls-colors .basic-colors {
+    display: flex;
+    border-radius: 6px;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.basic-colors .controls-color {
     width: 50px;
     height: 50px;
     border-radius: 50%;
     box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
     cursor: pointer;
+}
+
+.basic-colors li + li {
+    margin-left: 10px;
 }
 
 .controls-color:nth-child(1) {
@@ -104,5 +117,11 @@ body {
 
 .controls-color:nth-child(9) {
     background-color: #5856d6;
+}
+
+.controls-colors .custom-colors {
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
 }
 
