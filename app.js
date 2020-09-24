@@ -4,6 +4,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const colors = document.querySelector('#jsColors');
     const range = document.querySelector('#jsRange');
     const mode = document.querySelector('#jsMode');
+    const saveBtn = document.querySelector('#jsSave');
 
     const INITIAL_COLOR = '#000000';
     const CANVAS_SIZE = 700;
@@ -11,6 +12,8 @@ window.addEventListener('DOMContentLoaded', () => {
     canvas.width = CANVAS_SIZE;
     canvas.height = CANVAS_SIZE;
 
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0 ,0, CANVAS_SIZE ,CANVAS_SIZE);
     ctx.strokeStyle = INITIAL_COLOR;
     ctx.fillStyle = INITIAL_COLOR;
     ctx.lineWidth = 2.5;
@@ -36,7 +39,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
     function startPainting() {
         painting = true;
-
     }
 
     function handleColorClick(e) {
@@ -69,12 +71,25 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function handleCM(e) {
+        e.preventDefault(); // 우클릭 메뉴 방지위해서
+    }
+
+    function handleSaveClick() {
+        const image = canvas.toDataURL(); // type default : png
+        const link = document.createElement('a');
+        link.href = image;
+        link.download = 'PaintJS[🎨]';
+        link.click();
+    }
+
     if (canvas) {
         canvas.addEventListener('mousemove', onMouseMove);
         canvas.addEventListener('mousedown', startPainting);
         canvas.addEventListener('mouseup', stopPainting);
         canvas.addEventListener('mouseleave', stopPainting);
         canvas.addEventListener('click', handleCanvasClick);
+        canvas.addEventListener('contextmenu', handleCM);
     }
 
     colors.addEventListener('click', handleColorClick);
@@ -85,6 +100,10 @@ window.addEventListener('DOMContentLoaded', () => {
 
     if (mode) {
         mode.addEventListener('click', handleModeClick);
+    }
+
+    if (saveBtn) {
+        saveBtn.addEventListener('click', handleSaveClick);
     }
 
 
