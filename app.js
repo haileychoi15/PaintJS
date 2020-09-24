@@ -5,6 +5,8 @@ window.addEventListener('DOMContentLoaded', () => {
     const colorPick = document.querySelector('#jsCustomColor');
     const range = document.querySelector('#jsRange');
     const mode = document.querySelector('#jsMode');
+    const eraseBtn = document.querySelector('#jsErase');
+    const resetBtn = document.querySelector('#jsReset');
     const saveBtn = document.querySelector('#jsSave');
 
     const INITIAL_COLOR = '#000000';
@@ -21,6 +23,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     let painting = false;
     let filling = false;
+    let size = ctx.lineWidth;
 
     function onMouseMove(e) {
         const x = e.offsetX;
@@ -43,23 +46,22 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     function handleColorClick(e) {
-        if (e.target.classList.contains('jsColor')) {
-            const color = window.getComputedStyle(e.target).backgroundColor;
+        const target = e.target;
+        ctx.lineWidth = size;
+        if (target.classList.contains('jsColor')) {
+            const color = (target.classList.contains('jsPickColor'))
+                ? target.value
+                : window.getComputedStyle(target).backgroundColor;
             ctx.strokeStyle = color;
-            ctx.fillStyle = color;
-        }
-    }
-
-    function handleColorPickClick(e) {
-        if (e.target.classList.contains('jsColor')) {
-            const color =  e.target.value;
-            ctx.strokeStyle = color;
-            ctx.fillStyle = color;
+            if (filling) {
+                ctx.fillStyle = color;
+                ctx.fillRect(0 ,0, CANVAS_SIZE ,CANVAS_SIZE);
+            }
         }
     }
 
     function handleRangeChange(e) {
-        const size = e.target.value;
+        size = e.target.value;
         ctx.lineWidth = size;
     }
 
@@ -74,14 +76,22 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function handleCanvasClick() {
-        if (filling) {
-            ctx.fillRect(0 ,0, CANVAS_SIZE ,CANVAS_SIZE);
-        }
-    }
-
     function handleCM(e) {
         e.preventDefault(); // 우클릭 메뉴 방지위해서
+    }
+
+    function handleEraseClick() {
+        ctx.strokeStyle = ctx.fillStyle;
+        ctx.lineWidth = 50;
+    }
+
+    function handleResetClick() {
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0 ,0, CANVAS_SIZE ,CANVAS_SIZE);
+        ctx.strokeStyle = INITIAL_COLOR;
+        ctx.fillStyle = INITIAL_COLOR;
+        range.value = 2.5;
+        ctx.lineWidth = 2.5;
     }
 
     function handleSaveClick() {
@@ -97,12 +107,11 @@ window.addEventListener('DOMContentLoaded', () => {
         canvas.addEventListener('mousedown', startPainting);
         canvas.addEventListener('mouseup', stopPainting);
         canvas.addEventListener('mouseleave', stopPainting);
-        canvas.addEventListener('click', handleCanvasClick);
         canvas.addEventListener('contextmenu', handleCM);
     }
 
     colors.addEventListener('click', handleColorClick);
-    colorPick.addEventListener('input', handleColorPickClick);
+    colorPick.addEventListener('input', handleColorClick);
 
     if (range) {
         range.addEventListener('input', handleRangeChange);
@@ -114,6 +123,14 @@ window.addEventListener('DOMContentLoaded', () => {
 
     if (saveBtn) {
         saveBtn.addEventListener('click', handleSaveClick);
+    }
+
+    if (eraseBtn) {
+        eraseBtn.addEventListener('click', handleEraseClick);
+    }
+
+    if (resetBtn) {
+        resetBtn.addEventListener('click', handleResetClick);
     }
 
 
