@@ -119,6 +119,24 @@ body {
     background-color: #5856d6;
 }
 
+.controls-color:last-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at top, #e36969, transparent),
+                radial-gradient(circle at right, #ffec00, transparent),
+                radial-gradient(circle at left, #0080ff, transparent),
+                radial-gradient(circle at bottom, #00ff2a, transparent);
+}
+
+.controls-color:last-child input {
+    width: 40px;
+    height: 40px;
+    margin-left: 0;
+    border-radius: 50%;
+    opacity: 0;
+}
+
 .controls-colors .custom-colors {
     width: 40px;
     height: 40px;

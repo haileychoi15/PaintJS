@@ -1,4 +1,5 @@
 window.addEventListener('DOMContentLoaded', () => {
+
     const canvas = document.querySelector('#jsCanvas');
     const ctx = canvas.getContext('2d');
     const colors = document.querySelector('#jsColors');
@@ -11,15 +12,20 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const INITIAL_COLOR = '#000000';
     const CANVAS_SIZE = 700;
+    let backgroundColor = '#ffffff';
 
     canvas.width = CANVAS_SIZE;
     canvas.height = CANVAS_SIZE;
 
-    ctx.fillStyle = '#ffffff';
-    ctx.fillRect(0 ,0, CANVAS_SIZE ,CANVAS_SIZE);
-    ctx.strokeStyle = INITIAL_COLOR;
-    ctx.fillStyle = INITIAL_COLOR;
-    ctx.lineWidth = 2.5;
+    function init() {
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0 ,0, CANVAS_SIZE ,CANVAS_SIZE);
+        ctx.strokeStyle = INITIAL_COLOR;
+        ctx.fillStyle = INITIAL_COLOR;
+        ctx.lineWidth = 2.5;
+    }
+
+    init();
 
     let painting = false;
     let filling = false;
@@ -55,6 +61,7 @@ window.addEventListener('DOMContentLoaded', () => {
             ctx.strokeStyle = color;
             if (filling) {
                 ctx.fillStyle = color;
+                backgroundColor = color;
                 ctx.fillRect(0 ,0, CANVAS_SIZE ,CANVAS_SIZE);
             }
         }
@@ -81,17 +88,13 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     function handleEraseClick() {
-        ctx.strokeStyle = ctx.fillStyle;
+        ctx.strokeStyle = backgroundColor;
         ctx.lineWidth = 50;
     }
 
     function handleResetClick() {
-        ctx.fillStyle = '#ffffff';
-        ctx.fillRect(0 ,0, CANVAS_SIZE ,CANVAS_SIZE);
-        ctx.strokeStyle = INITIAL_COLOR;
-        ctx.fillStyle = INITIAL_COLOR;
+        init();
         range.value = 2.5;
-        ctx.lineWidth = 2.5;
     }
 
     function handleSaveClick() {
@@ -132,8 +135,4 @@ window.addEventListener('DOMContentLoaded', () => {
     if (resetBtn) {
         resetBtn.addEventListener('click', handleResetClick);
     }
-
-
-
-
 });
