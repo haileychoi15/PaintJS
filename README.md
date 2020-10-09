@@ -6,6 +6,7 @@ PaintJs is a Paint Board made with VanillaJS.
 
 ## Features
 - Pick colors.
+- Change the pen size.
 - Paint the board.
 - Fill the board.
 - Erase the paint.
