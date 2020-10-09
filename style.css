@@ -2,7 +2,7 @@
 
 body {
     background-color: #f6f9fc;
-    font-family: 'Nanum Gothic', sans-serif;
+    font-family: 'Chilanka', cursive;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,7 +11,8 @@ body {
 
 .canvas {
     width: 700px;
-    height: 700px;
+    height: 500px;
+    margin-bottom: 30px;
     background-color: #ffffff;
     border-radius: 15px;
     box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
@@ -21,11 +22,20 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 70px;
+    width: 700px;
 }
 
 .controls .controls-range {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-bottom: 30px;
+}
+
+.controls .controls-range .range-icon {
+    font-size: 26px;
+    margin-right: 10px;
+    color: #0579ff;
 }
 
 .controls .controls-range input {
@@ -40,18 +50,22 @@ body {
     width: 80px;
     border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 20px;
-    padding: 10px 20px;
+    padding: 12px 20px 10px;
     font-weight: bold;
     text-align: center;
     text-transform: uppercase;
     color: rgba(0, 0, 0, 0.8);
     background-color: #ffffff;
     box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
-    transition: transform 150ms ease-in-out;
+    transition: all 150ms ease-in-out;
 }
 
 .controls-btns button + button {
     margin-left: 5px;
+}
+
+.controls-btns button:hover {
+    box-shadow: 0 5px 8px rgba(50, 50, 93, 0.2), 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .controls-btns button:active {
@@ -61,10 +75,14 @@ body {
 .controls .controls-colors {
     display: flex;
     align-items: center;
+    width: 100%;
+    margin-bottom: 30px;
 }
 
 .controls-colors .basic-colors {
     display: flex;
+    justify-content: space-between;
+    width: 100%;
     border-radius: 6px;
     padding: 10px 20px;
     background-color: #ffffff;
@@ -135,6 +153,7 @@ body {
     margin-left: 0;
     border-radius: 50%;
     opacity: 0;
+    cursor: pointer;
 }
 
 .controls-colors .custom-colors {
@@ -143,11 +162,16 @@ body {
     margin-left: 10px;
 }
 
-@media screen and (min-width: 1080px){
+/*@media screen and (min-width: 1080px){
     body {
         flex-direction: row;
         justify-content: center;
         align-items: flex-start;
     }
-}
+
+    .canvas {
+        margin-right: 50px;
+    }
+
+}*/
 

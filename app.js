@@ -10,16 +10,20 @@ window.addEventListener('DOMContentLoaded', () => {
     const resetBtn = document.querySelector('#jsReset');
     const saveBtn = document.querySelector('#jsSave');
 
+    const canvasStyle = window.getComputedStyle(canvas);
+    const CANVAS_WIDTH = Number(canvasStyle.width.replace('px', ''));
+    const CANVAS_HEIGHT = Number(canvasStyle.height.replace('px', ''));
+
     const INITIAL_COLOR = '#000000';
-    const CANVAS_SIZE = 700;
     let backgroundColor = '#ffffff';
 
-    canvas.width = CANVAS_SIZE;
-    canvas.height = CANVAS_SIZE;
+    canvas.width = CANVAS_WIDTH;
+    canvas.height = CANVAS_HEIGHT;
+    console.log(CANVAS_WIDTH , CANVAS_HEIGHT);
 
     function init() {
         ctx.fillStyle = '#ffffff';
-        ctx.fillRect(0 ,0, CANVAS_SIZE ,CANVAS_SIZE);
+        ctx.fillRect(0 ,0, CANVAS_WIDTH , CANVAS_HEIGHT);
         ctx.strokeStyle = INITIAL_COLOR;
         ctx.fillStyle = INITIAL_COLOR;
         ctx.lineWidth = 2.5;
@@ -62,7 +66,7 @@ window.addEventListener('DOMContentLoaded', () => {
             if (filling) {
                 ctx.fillStyle = color;
                 backgroundColor = color;
-                ctx.fillRect(0 ,0, CANVAS_SIZE ,CANVAS_SIZE);
+                ctx.fillRect(0 ,0, CANVAS_WIDTH ,CANVAS_HEIGHT);
             }
         }
     }
@@ -73,7 +77,6 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     function handleModeClick() {
-        console.log(filling);
         if (filling) {
             filling = false;
             mode.innerText = 'Fill';
@@ -94,6 +97,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
     function handleResetClick() {
         init();
+        size = 2.5;
+        ctx.lineWidth = size;
         range.value = 2.5;
     }
 

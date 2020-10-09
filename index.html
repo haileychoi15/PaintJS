@@ -4,22 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" type="image/x-icon" href="images/palette.png" />
+    <link rel="shortcut icon" type="image/x-icon" href="images/paint.png" />
+    <link href="https://fonts.googleapis.com/css2?family=Chilanka&display=swap" rel="stylesheet">
     <title>PaintJS</title>
+    <script src="https://kit.fontawesome.com/5342aa1b58.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <canvas id="jsCanvas" class="canvas"></canvas>
+    <div class="canvas-container">
+        <canvas id="jsCanvas" class="canvas"></canvas>
+    </div>
     <div class="controls">
-        <div class="controls-range">
-            <input type="range" id="jsRange" min="0.1" max="5.0" value="2.5" step="0.1" />
-        </div>
-        <div class="controls-btns">
-            <button id="jsMode">Fill</button>
-            <button id="jsErase">Erase</button>
-            <button id="jsReset">Reset</button>
-            <button id="jsSave">Save</button>
-        </div>
         <div class="controls-colors">
             <ul class="basic-colors" id="jsColors">
                 <li class="controls-color jsColor"></li>
@@ -31,11 +25,22 @@
                 <li class="controls-color jsColor"></li>
                 <li class="controls-color jsColor"></li>
                 <li class="controls-color jsColor"></li>
-                <li class="controls-color jsColor">
+                <li class="controls-color jsColor customColor">
                     <input type="color" class="custom-colors jsColor jsPickColor" id="jsCustomColor" />
                 </li>
             </ul>
-
+        </div>
+        <div class="controls-range">
+            <span class="range-icon" aria-label="Change pen size">
+                <i class="fas fa-pencil-alt"></i>
+            </span>
+            <input type="range" id="jsRange" min="0.1" max="5.0" value="2.5" step="0.1" />
+        </div>
+        <div class="controls-btns">
+            <button id="jsMode">Fill</button>
+            <button id="jsErase">Erase</button>
+            <button id="jsReset">Reset</button>
+            <button id="jsSave">Save</button>
         </div>
     </div>
     <script src="app.js"></script>
